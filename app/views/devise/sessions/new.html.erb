@@ -1,0 +1,28 @@
+<!--# first page user lands on-->
+
+<div class="box p-5 flex-column min-vh-100">
+  <div class="form-card">
+<h2 class="text-white">Login</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email", class: 'form-control rounded-3' } , label_html: {class: "text-white"} %>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password", class: 'form-control rounded-3' }, label_html: {class: "text-white"} %>
+    <%= f.input :remember_me, as: :boolean, label_html: { class: 'form-check-label text-white' } if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Login', class: 'btn btn-info w-100 rounded-3 fw-bold mb-4'%>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+<div class="mb-5"></div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+@import "bootstrap";
+
+.content-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #40513B;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Example box shadow */
+}
+
+.description, .map, .reviews {
+  margin-top: 20px;
+}
+
+.reviews {
+  margin-bottom: 300px;
+}
+
+.item-images {
+  margin-top: 5px;
+}
+
+.item-images img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.location-image {
+width: 100%;
+height: auto;
+}
+
+.price {
+  text-align: right;
+  justify-content: space-between;
+}
+
+.logo-image {
+  height: 100px;
+}

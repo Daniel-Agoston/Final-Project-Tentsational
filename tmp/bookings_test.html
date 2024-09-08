@@ -1,0 +1,208 @@
+<html><head><style type="text/css">.turbo-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 2147483647;
+  transition:
+    width 300ms ease-out,
+    opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+</style>
+    <title>Tentsational</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+
+    <link rel="stylesheet" href="/assets/application-2456ff69c7950ae3027c4aa1cfbb59153d9b55d90a8cc9099dc9a5e148fc5695.css" data-turbo-track="reload">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-d52e50a4a98515b3f8ba85c9252dd35f43598bfe2352140fdfbb771ee23742f7.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js",
+    "bootstrap": "/assets/bootstrap.min-3389e8d94238c6aae57b91819279862a918c12e4596fd5a397c51f16df96057e.js",
+    "@popperjs/core": "/assets/popper-003a40d80fd205e1fa00da117d5bdc19720ba330706eaa17f9ba9513fa502304.js",
+    "flatpickr": "/assets/flatpickr-ccb36f17c0c654f44cca01322dcaa8ba638860dd2915c34c99b519c044f3b882.js",
+    "mapbox-gl": "https://ga.jspm.io/npm:mapbox-gl@3.1.2/dist/mapbox-gl.js",
+    "process": "https://ga.jspm.io/npm:@jspm/core@2.0.1/nodelibs/browser/process-production.js",
+    "@mapbox/mapbox-gl-geocoder": "https://ga.jspm.io/npm:@mapbox/mapbox-gl-geocoder@5.0.0/lib/index.js",
+    "#lib/client.js": "https://ga.jspm.io/npm:@mapbox/mapbox-sdk@0.13.7/lib/browser/browser-client.js",
+    "@mapbox/fusspot": "https://ga.jspm.io/npm:@mapbox/fusspot@0.4.0/lib/index.js",
+    "@mapbox/mapbox-sdk": "https://ga.jspm.io/npm:@mapbox/mapbox-sdk@0.13.7/index.js",
+    "@mapbox/mapbox-sdk/services/geocoding": "https://ga.jspm.io/npm:@mapbox/mapbox-sdk@0.13.7/services/geocoding.js",
+    "@mapbox/parse-mapbox-token": "https://ga.jspm.io/npm:@mapbox/parse-mapbox-token@0.2.0/index.js",
+    "base-64": "https://ga.jspm.io/npm:base-64@0.1.0/base64.js",
+    "eventemitter3": "https://ga.jspm.io/npm:eventemitter3@3.1.2/index.js",
+    "events": "https://ga.jspm.io/npm:events@3.3.0/events.js",
+    "fuzzy": "https://ga.jspm.io/npm:fuzzy@0.1.3/lib/fuzzy.js",
+    "is-plain-obj": "https://ga.jspm.io/npm:is-plain-obj@1.1.0/index.js",
+    "lodash.debounce": "https://ga.jspm.io/npm:lodash.debounce@4.0.8/index.js",
+    "nanoid": "https://ga.jspm.io/npm:nanoid@3.3.7/index.browser.js",
+    "subtag": "https://ga.jspm.io/npm:subtag@0.5.0/subtag.js",
+    "suggestions": "https://ga.jspm.io/npm:suggestions@1.7.1/index.js",
+    "xtend": "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js",
+    "controllers/application": "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js",
+    "controllers/basket_controller": "/assets/controllers/basket_controller-a4ce2c5d3427ba9c4493ef628aed43adc4842fb21923e03f7810cf1de3634473.js",
+    "controllers/calander_controller": "/assets/controllers/calander_controller-6e13712c8e25267dfb0cdcf730ca817a6cfc4c73fa2657434e8f89d796f4ba4b.js",
+    "controllers/datepicker_controller": "/assets/controllers/datepicker_controller-62999194588bda56b02e77c27f3a5afd8ef032b390d46da63c3629b9d9fca31f.js",
+    "controllers/hello_controller": "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js",
+    "controllers": "/assets/controllers/index-d351b827f95aa76967fdef00e8e173e7985b35d0ad9204778c3f89d6f297f3f9.js",
+    "controllers/map_controller": "/assets/controllers/map_controller-a69297b8744fd11e92017cd34d14f58aa3a45e39f0054fb70d3fd92bb11112be.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/bootstrap.min-3389e8d94238c6aae57b91819279862a918c12e4596fd5a397c51f16df96057e.js">
+<link rel="modulepreload" href="/assets/popper-003a40d80fd205e1fa00da117d5bdc19720ba330706eaa17f9ba9513fa502304.js">
+<script src="/assets/es-module-shims.min-4ca9b3dd5e434131e3bb4b0c1d7dff3bfd4035672a5086deec6f73979a49be73.js" async="async" data-turbo-track="reload"></script>
+<script type="module">import "application"</script>
+  </head>
+
+  <body>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lw pb-2 pt-0">
+  <div class="container-fluid">
+    <div class="d-flex">
+  <a href="/">
+      <img class="logo" src="/assets/logo_v6-9706780814b83441066d300e824e878c393133b7636e86874083f9ba0b905ef7.png">
+</a>    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto d-flex align-items-center gap-3">
+          <li class="nav-item active">
+
+            <a class="nav-link text-white border border-white rounded-3 px-3" href="/dashboard">
+  <i class="fa-solid fa-gauge me-2 text-info"></i>
+  Dashboard
+</a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white border border-white rounded-3 px-3" href="/items/new">
+            <i class="fa-solid fa-plus me-2 text-info"></i>List Item
+</a>          </li>
+
+          <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="circle me-2"><i class="fa-solid fa-user text-info"></i></div>
+          </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/items/new">New Item</a>
+              <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <a data-turbo-method="delete" class="dropdown-item" href="/users/sign_out">Log out</a>
+            </div>
+          </li>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    
+    <div class="box py-1" id="box-2" data-controller="basket">
+  <div class="form-card my-5">
+    <h2 class="text-white"><i class="fa-solid fa-paperclip me-7 text-info"></i> Initial Basket</h2>
+
+    <form class="simple_form new_booking" id="new_booking" novalidate="novalidate" action="/items/10/bookings" accept-charset="UTF-8" method="post">
+      <h4 class="text-info mb-2 fw-bold">Your Item(s)</h4>
+
+      <div class="card-product rounded-5 my-4">
+        <img class="card-img" src="https://res-2.cloudinary.com/dktxdvov5/image/upload/e3in02dyvzvlxe000cmund2d9h5v?_a=BACCd2Bn">
+        <div class="d-flex justify-content-between w-100 align-items-center">
+          <div class="card-product-infos">
+            <h2>Test Item</h2>
+            <p>Item description</p>
+          </div>
+          <div class="qnty">
+            <label class="form-label text-white fw-bold me-4" for="booking_quantity">Select Quantity:</label>
+            <select name="booking[quantity]" id="booking_quantity" class="form-control custom-input" data-action="change->basket#updateFinalBasket" data-basket-target="quantitySelector"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+            <p class="fw-bold me-4">Price: £100</p>
+            <p class="fw-bold me-4">id: 10</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="basket pt-3">
+        <h4 class="text-info mb-3 fw-bold">Final Basket</h4>
+
+        <div class="card-product rounded-5 my-4">
+          <div class="icon-box d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-cart-shopping basket"></i>
+          </div>
+
+          <div class="d-flex justify-content-between w-100 align-items-center">
+            <div class="card-product-infos">
+              <h2>Test Item</h2>
+              <p>Item description</p>
+            </div>
+            <div class="qnty me-3">
+              <p class="fw-bold me-4">Quantity: <span data-basket-target="finalQuantity"></span></p>
+              <p class="fw-bold me-4">Price: <span data-basket-target="finalPrice" data-price="100">£100</span></p>
+              <hr class="text-dark">
+              <h5>Total: <span data-basket-target="totalPrice">0.00</span></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" name="commit" value="Confirm Booking" class="btn btn btn-info w-100 rounded-pill fw-bold mt-3 py-2 mt-4" data-disable-with="Confirm Booking">
+      </div>
+</form>  </div>
+
+
+
+
+  <footer class="footer mt-auto py-3 text-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <img class="logo" style="height: 100px" src="/assets/logotext-c9f2283d9bcf157eedfd385bc72d27c2229d4c680bb86fb6696c35a7db9f518a.png">
+        <p class="fw-bold tag-line">Helping the community since 2024</p>
+      </div>
+      <div class="col-md-4 mb-3 mt-4">
+        <h5>Quick Links</h5>
+
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light">About Us</a></li>
+          <li><a href="#" class="text-light">Contact Us</a></li>
+   <li><a href="#" class="text-light">Terms &amp; Conditions</a></li>
+        </ul>
+
+      </div>
+      <div class="col-md-4 mb-3 mt-4">
+        <h5>Follow Us</h5>
+        <div class="social-links">
+          <a href="#" class="me-2 text-light"><i class="fab fa-github fs-3"></i></a>
+          <a href="#" class="me-2 text-light"><i class="fab fa-instagram fs-3"></i></a>
+          <a href="#" class="me-2 text-light"><i class="fab fa-facebook fs-3"></i></a>
+          <a href="#" class="me-2 text-light"><i class="fab fa-twitter fs-3"></i></a>
+          <a href="#"><i class="fab fa-linkedin text-light fs-3"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center mt-3">
+        <hr id="footer-hr">
+        <p>© 2024 Tentsational. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+  
+
+</body></html>

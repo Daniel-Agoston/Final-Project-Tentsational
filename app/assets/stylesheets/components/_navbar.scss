@@ -1,0 +1,29 @@
+.navbar-lw {
+  justify-content: space-between;
+  background: #40513B;
+}
+
+.navbar-lw .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lw .navbar-brand img {
+  width: 40px;
+}
+
+.logo {
+  height: 70px;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+ .spacer {
+   height: 200px;
+ }

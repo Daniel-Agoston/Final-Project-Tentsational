@@ -1,0 +1,97 @@
+.
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Procfile
+├── README.md
+├── Rakefile
+├── all-files.txt
+├── app
+│   ├── assets
+│   ├── channels
+│   ├── controllers
+│   ├── helpers
+│   ├── javascript
+│   ├── jobs
+│   ├── mailers
+│   ├── models
+│   ├── search_algorithm
+│   └── views
+├── bin
+│   ├── bundle
+│   ├── docker-entrypoint
+│   ├── importmap
+│   ├── rails
+│   ├── rake
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── cable.yml
+│   ├── credentials
+│   ├── credentials.yml.enc
+│   ├── credentials.yml.enc.bak
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   ├── importmap.rb
+│   ├── initializers
+│   ├── locales
+│   ├── master.key
+│   ├── puma.rb
+│   ├── routes.rb
+│   ├── sidekiq.yml
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── migrate
+│   ├── schema.rb
+│   └── seeds.rb
+├── directory_structure.txt
+├── lib
+│   ├── assets
+│   ├── tasks
+│   └── templates
+├── log
+│   ├── development.log
+│   └── test.log
+├── node_modules
+│   └── @hotwired
+├── package-lock.json
+├── package.json
+├── public
+│   ├── 404.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
+│   ├── assets
+│   ├── favicon.ico
+│   └── robots.txt
+├── storage
+├── test
+│   ├── application_system_test_case.rb
+│   ├── channels
+│   ├── controllers
+│   ├── fixtures
+│   ├── helpers
+│   ├── integration
+│   ├── jobs
+│   ├── mailers
+│   ├── models
+│   ├── services
+│   ├── system
+│   └── test_helper.rb
+├── tmp
+│   ├── bookings_test.html
+│   ├── cache
+│   ├── local_secret.txt
+│   ├── pids
+│   ├── restart.txt
+│   ├── screenshots
+│   ├── sockets
+│   └── storage
+└── vendor
+    └── javascript
+
+49 directories, 46 files

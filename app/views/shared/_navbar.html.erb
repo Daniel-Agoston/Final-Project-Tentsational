@@ -1,0 +1,50 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lw pb-2 pt-0">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <%= link_to root_path do %>
+        <%= image_tag "logo_v6.png", class: "logo" %>
+      <% end %>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto d-flex align-items-center gap-3">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to dashboard_path, class: "nav-link text-white border border-white rounded-3 px-3" do %>
+              <i class="fa-solid fa-gauge me-2 text-info"></i> Dashboard
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_item_path, class: "nav-link text-white border border-white rounded-3 px-3" do %>
+              <i class="fa-solid fa-plus me-2 text-info"></i> List Item
+            <% end %>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="text-white me-3">Logged in as:</span>
+            <span class="text-white"><%= current_user.email %></span>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="circle me-2">
+                <i class="fa-solid fa-user text-info"></i>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "List Item", new_item_path, class: "dropdown-item" %>
+              <%= link_to "Dasboard", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login or Sign up", new_user_session_path, class: "nav-link text-white" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

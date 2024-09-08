@@ -1,0 +1,35 @@
+<div class="box py-5">
+  <div class="form-card">
+    <h2 class="text-white">
+      <i class="fa-solid fa-plus me-3 text-info"></i>
+      List your item for sale or donation
+    </h2>
+
+    <%= simple_form_for @item do |f| %>
+      <% steps = [
+        { step: 1, field: :photo, label: "Upload a photo! Size: 1000 pixels wide by 584 pixels tall, Ratio: 16:9 ", as: :file },
+        { step: 2, field: :name, label: "Item name", as: :string, placeholder: "Clothing, kitchen, garden..." },
+        { step: 3, field: :category, label: "Select category", as: :select, collection: @categories || [], selected: @categories&.first },
+        { step: 4, field: :description, label: "Add a description!", as: :text, placeholder: "Add a short description...", input_html: { rows: 1, style: 'height: 40px;' } },
+        { step: 5, field: :address, label: "Item address", as: :string, placeholder: "Enter your Item's address" },
+        { step: 6, field: :price, label: "Price or 0 for donations", as: :string, placeholder: "£" },
+        { step: 7, field: :quantity, label: "Quantity", as: :integer, input_html: { class: 'form-control rounded-pill uniform-input', min: 1, step: 1, value: 1 } }
+      ] %>
+
+      <% steps.each do |step| %>
+        <h4 class="text-info mb-2 fw-bold">Step <%= step[:step] %></h4>
+        <%= f.input step[:field],
+                    label: step[:label],
+                    as: step[:as],
+                    collection: step[:collection],
+                    input_html: { class: 'form-control rounded-pill uniform-input', placeholder: step[:placeholder] }.merge(step[:input_html] || {}).compact,
+                    label_html: { class: "text-white" },
+                    selected: step[:selected].presence %>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.button :submit, "Add Item +", class: 'btn btn-info w-100 rounded-pill fw-bold mt-3 py-2' %>
+      </div>
+    <% end %>
+  </div>
+</div>

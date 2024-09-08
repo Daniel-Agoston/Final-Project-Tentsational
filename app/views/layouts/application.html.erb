@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tentsational</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #main-content {
+        flex: 1;
+        display: none;
+      }
+
+      @media (min-width: 1020px) {
+        #main-content {
+          display: block;
+        }
+
+        #small-screen-message {
+          display: none;
+        }
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        margin-top: auto;
+      }
+    </style>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <%= javascript_importmap_tags %>
+
+  </head>
+
+  <body>
+    <div id="main-content">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+
+      <footer class="footer text-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <%= image_tag "logotext.png", class: "logo", style: "height: 100px" %>
+              <p class="fw-bold tag-line">Helping the community since 2024</p>
+            </div>
+            <div class="col-md-4 mb-3 mt-4">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-light">About Us</a></li>
+                <li><a href="#" class="text-light">Contact Us</a></li>
+                <li><a href="#" class="text-light">Terms & Conditions</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-3 mt-4">
+              <h5>Follow Us</h5>
+              <div class="social-links">
+                <a href="#" class="me-2 text-light"><i class="fab fa-github fs-3"></i></a>
+                <a href="#" class="me-2 text-light"><i class="fab fa-instagram fs-3"></i></a>
+                <a href="#" class="me-2 text-light"><i class="fab fa-facebook fs-3"></i></a>
+                <a href="#" class="me-2 text-light"><i class="fab fa-twitter fs-3"></i></a>
+                <a href="#"><i class="fab fa-linkedin text-light fs-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center mt-3">
+              <hr id="footer-hr">
+              <p>&copy; 2024 Tentsational. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="small-screen-message" style="display: none; align-items: center; justify-content: center; height: 100vh; text-align: center; background-color: rgb(64, 82, 59);">
+      <div>
+        <%= image_tag "logo_v6.png", alt: "Tentsational Logo", style: "max-width: 300px; width: 100%; height: auto; margin-bottom: 20px;" %>
+        <p style="color: white; font-size: 1.5rem;">This app’s features are best experienced on a larger screen. For the best experience, please use a device with a bigger screen. Thank you</p>
+      </div>
+    </div>
+
+    <%= javascript_include_tag "screen_check" %>
+  </body>
+</html>

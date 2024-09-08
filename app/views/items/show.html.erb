@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="d-flex flex-wrap">
+    <div class="left-column" style="flex: 1; min-width: 60%; max-width: 70%;">
+      <div class="item-images">
+        <%= cl_image_tag @item.photo.key, cloud_name: 'dktxdvov5', style: 'width: 100%; height: 500px; object-fit: cover; border-radius: 8px;' %>
+      </div>
+
+      <div class="item-info mt-4" style="margin-left: 12.5%; margin-right: 12.5%; margin-bottom: 5%;">
+        <div class="d-flex justify-content-between align-items-center mb-2 flex-nowrap">
+          <h5 class="info-item" style="margin-right: 4%; white-space: nowrap; flex-shrink: 0;">Price: £<%= @item.price %></h5>
+          <h5 class="info-item" style="margin-right: 4%; white-space: nowrap; flex-shrink: 0;">Qty available: <%= @item.quantity.zero? ? 'Sold out' : @item.quantity %></h5>
+          <h5 class="info-item" style="white-space: nowrap; flex-shrink: 0;">Item id: <%= @item.id %></h5>
+        </div>
+
+        <div class="action-buttons mt-3">
+          <% if user_signed_in? %>
+            <% if @item.quantity > 0 && @item.user != current_user %>
+              <%= link_to new_item_booking_path(@item), class: 'btn btn-sm btn-info w-100 rounded-pill fw-bold py-2 mb-2' do %>
+                Take me home!
+              <% end %>
+            <% end %>
+
+            <% if @item.user == current_user || current_user.admin? %>
+              <%= link_to item_path(@item), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this item?' }, class: 'btn btn-sm btn-danger w-100 rounded-pill fw-bold py-2 text-decoration-none' do %>
+                Delete Item
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <style>
+        .info-item {
+          flex: 1;
+          text-align: center;
+          font-size: 1rem;
+        }
+
+        .reviews {
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .left-column {
+          display: flex;
+          flex-direction: column;
+        }
+      </style>
+
+      <div class="display-review mt-4">
+        <% @reviews.each_with_index do |review, index| %>
+          <div class="review-card mb-3">
+            <div>
+              <%
+                gibberish_pattern = /\b([a-z])\1{5,}|\b(\w{3,})\2{3,}|\b(\w)\3{5,}/i
+              %>
+
+              <% if review.comment.match?(gibberish_pattern) %>
+                <p>Comment: <%= truncate(review.comment, length: 50) %></p>
+              <% else %>
+                <p>Comment: <%= review.comment %></p>
+              <% end %>
+
+              <hr class="text-white">
+            </div>
+            <div class="review-card-1">
+              <h4>Rating: <%= render_stars(review.rating) %></h4>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="reviews">
+        <%= simple_form_for [@item, @review] do |f| %>
+          <h4 class="text-danger mb-3 fw-bold">Review Item (Max 180 chars)</h4>
+          <%= f.input :comment, label: false, input_html: { class: 'form-control rounded-pill', placeholder: "Write your review...", maxlength: 180 }, label_html: { class: "text-danger" } %>
+          <h4 class="text-danger mb-3 fw-bold mt-4">Rating</h4>
+          <%= f.input :rating, collection: [1, 2, 3, 4, 5], label: false, input_html: { class: 'form-control rounded-pill', placeholder: "Rate the item" }, label_html: { class: "text-danger" } %>
+          <div class="form-group">
+
+            <%= f.button :submit, "Post review", class: 'btn btn-info w-100 rounded-pill fw-bold mt-4 py-2', disabled: !user_signed_in?, title: (user_signed_in? ? "" : "Please login or sign up before continuing.") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="right-column" style="flex: 0 0 30%; max-width: 30%;">
+      <div class="details-card">
+        <div class="d-flex align-items-center justify-content-around">
+          <div class="item">
+            <%= image_tag "logo_tentsational.png", alt: "tentsational logo", class: "logo-image" %>
+          </div>
+          <div class="item">
+            <h2 class="text-white"><%= (@item.name.presence || "Unnamed Item")[0, 12] %></h2>
+          </div>
+        </div>
+
+        <div class="item-name-description mt-4">
+          <h4>What?</h4>
+          <% description = @item.description.strip %>
+          <p class="text-white description-text">
+            <%= description %>
+          </p>
+        </div>
+
+        <style>
+          .description-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            white-space: normal;
+          }
+
+          .description-text {
+            -webkit-line-clamp: 2;
+          }
+
+          @media (min-width: 768px) {
+            .description-text {
+              -webkit-line-clamp: 3;
+            }
+          }
+
+          @media (min-width: 1200px) {
+            .description-text {
+              -webkit-line-clamp: 3;
+            }
+          }
+        </style>
+
+        <div class="location-cost-card mt-4">
+          <div class="Location">
+            <h4>Where?</h4>
+            <% full_address = @item.address.strip %>
+            <% max_length = 35 %>
+            <p class="text-white" style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; white-space: normal;"><%= full_address.strip %></p>
+          </div>
+        </div>
+
+        <div class="mt-3" style="width: 100%; height: 100vh;"
+             data-controller="map"
+             data-map-markers-value="<%= @marker.to_json %>"
+             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+             <!-- The API KEY used here is restricted to a specific URL for security purposes. -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

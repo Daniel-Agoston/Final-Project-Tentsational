@@ -1,0 +1,39 @@
+/* General heading style */
+h1 {
+  margin: 0;
+}
+
+/* Background image for the + upload your new item pages */
+.box {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063633/development/static%20images%20for%20the%20app/garden_ojfdup.jpg');
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+/* Background image for the sign up page */
+.box11 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063341/development/static%20images%20for%20the%20app/kitchen_zbcodv.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+/* Background image for another page */
+.box12 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063326/development/static%20images%20for%20the%20app/bedroom_qitwik.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+/* Form card styling */
+.form-card {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+/* Ensure that the h2 inside .form-card has the correct margin */
+.form-card h2 {
+  margin-bottom: 20px;
+}
