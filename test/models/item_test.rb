@@ -15,7 +15,7 @@ class ItemTest < ActiveSupport::TestCase
       category: 'Test Category',
       description: 'This is a test item.',
       address: '123 Test Street, Test City',
-      price: 100,
+      price: 10,
       quantity: 1,
       user: @user
     )
@@ -45,7 +45,7 @@ class ItemTest < ActiveSupport::TestCase
       category: 'Test Category',
       description: 'This is a test item.',
       address: '123 Test Street, Test City',
-      price: 100,
+      price: 10,
       quantity: 0, # Invalid quantity
       user: @user
     )
@@ -57,12 +57,12 @@ class ItemTest < ActiveSupport::TestCase
     assert_includes @item.errors[:quantity], 'must be at least 1 when the item is created.'
   end
 
-  # Test that price must be valid
-  test 'price must be valid' do
-    @item.price = -1
-    assert_not @item.valid?
-    assert_includes @item.errors[:price], 'must be either 0 or a positive number.'
-  end
+    # Test that price must be valid
+    test 'price must be valid' do
+      @item.price = -1
+      assert_not @item.valid?
+      assert_includes @item.errors[:price], 'must be between 0 and 10 pounds.'
+    end
 
   # Test that status updates to sold out when quantity is zero
   test 'status should be sold out when quantity is zero' do

@@ -11,7 +11,7 @@ class BookingTest < ActiveSupport::TestCase
       category: 'Test Category',
       description: 'This is a test item.',
       address: '123 Test Street, Test City',
-      price: 100,
+      price: 10,
       quantity: 5,
       user: @owner
     )
