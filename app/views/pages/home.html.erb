@@ -1,12 +1,17 @@
 <div class="banner">
- <video loop muted autoplay class="video-banner" preload="auto">
-  <source src="https://res.cloudinary.com/dktxdvov5/video/upload/w_1280,h_720,q_auto,f_webm/v1724063349/development/static%20images%20for%20the%20app/banner_vid_v2_uhg8gd.webm" type="video/webm">
-  <source src="https://res.cloudinary.com/dktxdvov5/video/upload/w_1280,h_720,q_auto,f_mp4/v1724063349/development/static%20images%20for%20the%20app/banner_vid_v2_uhg8gd.mp4" type="video/mp4">
-  Your browser does not support the video.
-</video>
+  <!-- Video banner that autoplays, loops, and is muted -->
+  <video loop muted autoplay class="video-banner" preload="auto">
+    <source src="https://res.cloudinary.com/dktxdvov5/video/upload/w_1280,h_720,q_auto,f_webm/v1724063349/development/static%20images%20for%20the%20app/banner_vid_v2_uhg8gd.webm" type="video/webm">
+    <source src="https://res.cloudinary.com/dktxdvov5/video/upload/w_1280,h_720,q_auto,f_mp4/v1724063349/development/static%20images%20for%20the%20app/banner_vid_v2_uhg8gd.mp4" type="video/mp4">
+    Your browser does not support the video.
+  </video>
+
+  <!-- Container for the main message and search form overlaid on the video -->
   <div class="container d-flex justify-content-center flex-column h-100">
     <h1>Save <strong class="txt-emphasis">money</strong> in your area, find good second hand items</h1>
     <p id="banner-tagline">Help the community and the world at the same time.</p>
+
+    <!-- Search form for items -->
     <form novalidate="novalidate" class="simple_form search" action="<%= items_path %>" accept-charset="UTF-8" method="get">
       <div class="search-form-control form-group d-flex">
         <input class="form-control string required rounded-5" type="text" name="search[query]" id="search_query" placeholder="Search or click search button for all listed items" />
@@ -19,42 +24,50 @@
 </div>
 
 <div class="container">
-<div class="cards p-4 mt-4">
-  <%= link_to items_path(search: { query: 'Clothing' }), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063344/development/static%20images%20for%20the%20app/clothing_eivbky.jpg')">
-    Clothing
-  </div>
-  <% end %>
+  <!-- Container for category cards -->
+  <div class="cards p-4 mt-4">
+    <!-- Link to search for items in the 'Clothing' category -->
+    <%= link_to items_path(search: { query: 'Clothing' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063344/development/static%20images%20for%20the%20app/clothing_eivbky.jpg')">
+        Clothing
+      </div>
+    <% end %>
 
-  <%= link_to items_path(search: {query: 'Kitchen'}), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063341/development/static%20images%20for%20the%20app/kitchen_zbcodv.jpg')">
-    Kitchen
-  </div>
-  <% end %>
+    <!-- Link to search for items in the 'Kitchen' category -->
+    <%= link_to items_path(search: { query: 'Kitchen' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063341/development/static%20images%20for%20the%20app/kitchen_zbcodv.jpg')">
+        Kitchen
+      </div>
+    <% end %>
 
-  <%= link_to items_path(search: {query: 'Bedroom'}), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063326/development/static%20images%20for%20the%20app/bedroom_qitwik.jpg')">
-    Bedroom
+    <!-- Link to search for items in the 'Bedroom' category -->
+    <%= link_to items_path(search: { query: 'Bedroom' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063326/development/static%20images%20for%20the%20app/bedroom_qitwik.jpg')">
+        Bedroom
+      </div>
+    <% end %>
   </div>
-<% end %>
-</div>
-<div class="cards p-4 mb-4">
-  <%= link_to items_path(search: {query: 'Living Room'}), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063334/development/static%20images%20for%20the%20app/livingroom_wk69xj.jpg')">
-    Living Room
-  </div>
-<% end %>
 
-  <%= link_to items_path(search: {query: 'Garden'}), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063633/development/static%20images%20for%20the%20app/garden_ojfdup.jpg')">
-    Garden
-  </div>
-<% end %>
+  <div class="cards p-4 mb-4">
+    <!-- Link to search for items in the 'Living Room' category -->
+    <%= link_to items_path(search: { query: 'Living Room' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063334/development/static%20images%20for%20the%20app/livingroom_wk69xj.jpg')">
+        Living Room
+      </div>
+    <% end %>
 
-  <%= link_to items_path(search: {query: 'Other'}), class: "card-category-link" do %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063343/development/static%20images%20for%20the%20app/other_jtnxwc.jpg')">
-    Other
+    <!-- Link to search for items in the 'Garden' category -->
+    <%= link_to items_path(search: { query: 'Garden' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063633/development/static%20images%20for%20the%20app/garden_ojfdup.jpg')">
+        Garden
+      </div>
+    <% end %>
+
+    <!-- Link to search for items in the 'Other' category -->
+    <%= link_to items_path(search: { query: 'Other' }), class: "card-category-link" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dktxdvov5/image/upload/v1724063343/development/static%20images%20for%20the%20app/other_jtnxwc.jpg')">
+        Other
+      </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 </div>

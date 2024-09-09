@@ -1,11 +1,15 @@
 <div class="box py-5">
+  <!-- Container for the item listing form -->
   <div class="form-card">
+    <!-- Header with an icon and title for listing an item -->
     <h2 class="text-white">
       <i class="fa-solid fa-plus me-3 text-info"></i>
       List your item for sale or donation
     </h2>
 
+    <!-- Form for creating or editing an item -->
     <%= simple_form_for @item do |f| %>
+      <!-- Array of steps for the form fields -->
       <% steps = [
         { step: 1, field: :photo, label: "Upload a photo! Size: 1000 pixels wide by 584 pixels tall, Ratio: 16:9 ", as: :file },
         { step: 2, field: :name, label: "Item name", as: :string, placeholder: "Clothing, kitchen, garden..." },
@@ -16,7 +20,9 @@
         { step: 7, field: :quantity, label: "Quantity", as: :integer, input_html: { class: 'form-control rounded-pill uniform-input', min: 1, step: 1, value: 1 } }
       ] %>
 
+      <!-- Iterates through each step to generate form inputs dynamically -->
       <% steps.each do |step| %>
+        <!-- Displays the step number and input field -->
         <h4 class="text-info mb-2 fw-bold">Step <%= step[:step] %></h4>
         <%= f.input step[:field],
                     label: step[:label],
@@ -27,6 +33,7 @@
                     selected: step[:selected].presence %>
       <% end %>
 
+      <!-- Submit button for the form -->
       <div class="form-group">
         <%= f.button :submit, "Add Item +", class: 'btn btn-info w-100 rounded-pill fw-bold mt-3 py-2' %>
       </div>

@@ -1,20 +1,28 @@
 <div style="display: flex; height: 100vh;">
+  <!-- Container for displaying the list of items -->
   <div id="items-list" style="width: 70%; overflow-y: scroll;">
 
+    <!-- Predefined categories for filtering search results -->
     <% predefined_categories = ['Clothing', 'Kitchen', 'Bedroom', 'Living Room', 'Garden', 'Other'] %>
 
+    <!-- Checks if there are no items to display -->
     <% if @items.blank? %>
+      <!-- Checks if a search term is present and displays a message accordingly -->
       <% if params[:search].present? && params[:search][:query].present? %>
         <% search_term = params[:search][:query] %>
         <% if predefined_categories.include?(search_term) %>
+          <!-- Displays message if the search term is a predefined category -->
           <h1><i class="fa-solid fa-magnifying-glass"></i> <%= search_term %> item(s) not found</h1>
         <% else %>
+          <!-- Displays message for a generic search term -->
           <h1><i class="fa-solid fa-magnifying-glass"></i> "<%= sanitize(search_term) %>" item(s) not found</h1>
         <% end %>
       <% else %>
+        <!-- Displays message if no search term is provided and no items are found -->
         <h1><i class="fa-solid fa-magnifying-glass"></i> No items found</h1>
       <% end %>
     <% else %>
+      <!-- Displays messages based on the search term and the presence of items -->
       <% if params[:search].blank? || params[:search][:query].blank? %>
         <h1><i class="fa-solid fa-magnifying-glass"></i> All listed items</h1>
       <% elsif @item.blank? || @item == "Item" %>
@@ -28,23 +36,28 @@
         <h1><i class="fa-solid fa-magnifying-glass"></i> <%= sanitize(@item) %> item(s) found</h1>
       <% end %>
 
+      <!-- Container for displaying each item in a card format -->
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <% @items.each do |item| %>
           <div class="card" style="width: 16rem;">
+            <!-- Checks if an item has a photo attached and displays it; otherwise, shows a default image -->
             <% if item.photo.attached? %>
               <%= cl_image_tag item.photo.key, cloud_name: 'dktxdvov5', class: 'card-img', alt: "Image of #{item.name}" %>
             <% else %>
               <img src="/path/to/default_image.jpg" class="card-img" alt="Default image, item photo unavailable">
             <% end %>
+            <!-- Card content with item details -->
             <div class="card-particulars">
               <div class="index-card d-flex flex-column gap-3">
+                <!-- Displays truncated name, description, price, quantity, and other details -->
                 <h5 class="card-title"><%= (item.name.presence || "Unnamed Item").truncate(20) %></h5>
                 <p class="card-text"><%= item.description.present? ? item.description.truncate(25) : "No description available" %></p>
                 <p class="card-text">Price: £<%= item.price.present? ? item.price : "N/A" %></p>
                 <p class="card-text">Qty available: <%= item.quantity.zero? ? 'Sold out' : item.quantity %></p>
                 <p class="card-text">Qty listed: <%= item.qty_listed.zero? ? 'Sold out' : item.qty_listed %></p>
-                  <p class="card-text">Address: <%= item.address %></p>
+                <p class="card-text">Address: <%= item.address %></p>
                 <p class="card-text">Item id: <%= item.id %></p>
+                <!-- Link to view item details -->
                 <%= link_to 'View Details', item_path(item), class: "btn btn-info rounded-pill fw-bold", aria: { label: "View details for #{item.name}" } %>
               </div>
             </div>
@@ -54,9 +67,10 @@
     <% end %>
   </div>
 
-<div style="width: 30%; height: 100vh;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <!-- Container for displaying a map with item markers -->
+  <div style="width: 30%; height: 100vh;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <!-- The API KEY used here is restricted to a specific URL for security purposes. -->
 </div>

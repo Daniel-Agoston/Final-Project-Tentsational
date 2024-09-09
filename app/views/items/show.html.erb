@@ -1,10 +1,14 @@
 <div class="container">
+  <!-- Main container with flexible layout for item details and reviews -->
   <div class="d-flex flex-wrap">
+    <!-- Left column for item images and details -->
     <div class="left-column" style="flex: 1; min-width: 60%; max-width: 70%;">
+      <!-- Display the main image of the item -->
       <div class="item-images">
         <%= cl_image_tag @item.photo.key, cloud_name: 'dktxdvov5', style: 'width: 100%; height: 500px; object-fit: cover; border-radius: 8px;' %>
       </div>
 
+      <!-- Display item information and action buttons -->
       <div class="item-info mt-4" style="margin-left: 12.5%; margin-right: 12.5%; margin-bottom: 5%;">
         <div class="d-flex justify-content-between align-items-center mb-2 flex-nowrap">
           <h5 class="info-item" style="margin-right: 4%; white-space: nowrap; flex-shrink: 0;">Price: £<%= @item.price %></h5>
@@ -12,6 +16,7 @@
           <h5 class="info-item" style="white-space: nowrap; flex-shrink: 0;">Item id: <%= @item.id %></h5>
         </div>
 
+        <!-- Action buttons for item actions such as booking and deleting -->
         <div class="action-buttons mt-3">
           <% if user_signed_in? %>
             <% if @item.quantity > 0 && @item.user != current_user %>
@@ -29,6 +34,7 @@
         </div>
       </div>
 
+      <!-- Styling for the item information and reviews section -->
       <style>
         .info-item {
           flex: 1;
@@ -47,6 +53,7 @@
         }
       </style>
 
+      <!-- Display section for reviews -->
       <div class="display-review mt-4">
         <% @reviews.each_with_index do |review, index| %>
           <div class="review-card mb-3">
@@ -70,6 +77,7 @@
         <% end %>
       </div>
 
+      <!-- Form for submitting new reviews -->
       <div class="reviews">
         <%= simple_form_for [@item, @review] do |f| %>
           <h4 class="text-danger mb-3 fw-bold">Review Item (Max 180 chars)</h4>
@@ -77,13 +85,13 @@
           <h4 class="text-danger mb-3 fw-bold mt-4">Rating</h4>
           <%= f.input :rating, collection: [1, 2, 3, 4, 5], label: false, input_html: { class: 'form-control rounded-pill', placeholder: "Rate the item" }, label_html: { class: "text-danger" } %>
           <div class="form-group">
-
             <%= f.button :submit, "Post review", class: 'btn btn-info w-100 rounded-pill fw-bold mt-4 py-2', disabled: !user_signed_in?, title: (user_signed_in? ? "" : "Please login or sign up before continuing.") %>
           </div>
         <% end %>
       </div>
     </div>
 
+    <!-- Right column for item details and map -->
     <div class="right-column" style="flex: 0 0 30%; max-width: 30%;">
       <div class="details-card">
         <div class="d-flex align-items-center justify-content-around">
@@ -95,6 +103,7 @@
           </div>
         </div>
 
+        <!-- Display item description -->
         <div class="item-name-description mt-4">
           <h4>What?</h4>
           <% description = @item.description.strip %>
@@ -103,6 +112,7 @@
           </p>
         </div>
 
+        <!-- Style for description text to handle different screen sizes -->
         <style>
           .description-text {
             display: -webkit-box;
@@ -128,6 +138,7 @@
           }
         </style>
 
+        <!-- Display item location details -->
         <div class="location-cost-card mt-4">
           <div class="Location">
             <h4>Where?</h4>
@@ -137,6 +148,7 @@
           </div>
         </div>
 
+        <!-- Display a map with markers for item location -->
         <div class="mt-3" style="width: 100%; height: 100vh;"
              data-controller="map"
              data-map-markers-value="<%= @marker.to_json %>"

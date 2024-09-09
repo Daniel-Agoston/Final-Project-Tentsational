@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Inline styles for layout and responsive design -->
     <style>
       html, body {
         height: 100%;
@@ -19,6 +20,7 @@
         display: none;
       }
 
+      /* Media query for larger screens */
       @media (min-width: 1020px) {
         #main-content {
           display: block;
@@ -38,6 +40,7 @@
       }
     </style>
 
+    <!-- Stylesheets and JavaScript for the application -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -46,19 +49,25 @@
   </head>
 
   <body>
+    <!-- Main content container that adjusts based on screen size -->
     <div id="main-content">
+      <!-- Renders the shared navbar and flash messages -->
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
+      <!-- Main content yield -->
       <%= yield %>
 
+      <!-- Footer section with site information and links -->
       <footer class="footer text-light">
         <div class="container">
           <div class="row">
             <div class="col-md-4 mb-3">
+              <!-- Tentsational logo and tagline -->
               <%= image_tag "logotext.png", class: "logo", style: "height: 100px" %>
               <p class="fw-bold tag-line">Helping the community since 2024</p>
             </div>
             <div class="col-md-4 mb-3 mt-4">
+              <!-- Quick links section -->
               <h5>Quick Links</h5>
               <ul class="list-unstyled">
                 <li><a href="#" class="text-light">About Us</a></li>
@@ -67,6 +76,7 @@
               </ul>
             </div>
             <div class="col-md-4 mb-3 mt-4">
+              <!-- Social media links -->
               <h5>Follow Us</h5>
               <div class="social-links">
                 <a href="#" class="me-2 text-light"><i class="fab fa-github fs-3"></i></a>
@@ -79,6 +89,7 @@
           </div>
           <div class="row">
             <div class="col-12 text-center mt-3">
+              <!-- Footer copyright information -->
               <hr id="footer-hr">
               <p>&copy; 2024 Tentsational. All rights reserved.</p>
             </div>
@@ -87,6 +98,7 @@
       </footer>
     </div>
 
+    <!-- Message for smaller screens to prompt using a larger device -->
     <div id="small-screen-message" style="display: none; align-items: center; justify-content: center; height: 100vh; text-align: center; background-color: rgb(64, 82, 59);">
       <div>
         <%= image_tag "logo_v6.png", alt: "Tentsational Logo", style: "max-width: 300px; width: 100%; height: auto; margin-bottom: 20px;" %>
@@ -94,6 +106,7 @@
       </div>
     </div>
 
+    <!-- JavaScript for checking screen size -->
     <%= javascript_include_tag "screen_check" %>
   </body>
 </html>

@@ -1,17 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lw pb-2 pt-0">
   <div class="container-fluid">
+    <!-- Logo and Home link -->
     <div class="d-flex">
       <%= link_to root_path do %>
         <%= image_tag "logo_v6.png", class: "logo" %>
       <% end %>
     </div>
 
+    <!-- Toggler for collapsing the navbar on smaller screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Collapsible content of the navbar -->
     <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto d-flex align-items-center gap-3">
+        <!-- If the user is signed in, display dashboard, list item, and user info links -->
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to dashboard_path, class: "nav-link text-white border border-white rounded-3 px-3" do %>
@@ -23,10 +27,12 @@
               <i class="fa-solid fa-plus me-2 text-info"></i> List Item
             <% end %>
           </li>
+          <!-- Displays the logged-in user's email -->
           <li class="nav-item d-flex align-items-center">
             <span class="text-white me-3">Logged in as:</span>
             <span class="text-white"><%= current_user.email %></span>
           </li>
+          <!-- User dropdown menu for more options -->
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="circle me-2">
@@ -40,6 +46,7 @@
             </div>
           </li>
         <% else %>
+          <!-- If the user is not signed in, show a login or sign-up link -->
           <li class="nav-item">
             <%= link_to "Login or Sign up", new_user_session_path, class: "nav-link text-white" %>
           </li>
